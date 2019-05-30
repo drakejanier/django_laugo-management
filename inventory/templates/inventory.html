@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="button-group">
+    <!-- {% url 'display_items' %} -->
+    <h6>ITEM INVENTORY</h6>
+    <a href="{% url 'display_items' %}" class="btn btn-outline-primary btn-md" rold="button">REFRESH</a>
+    
+</div>
+<table class="table table-hover">
+    <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Stock</th>
+        <th>Unit</th>
+        <th>Status</th>
+        <th>Supplier</th>
+    </thead>
+
+    <tbody>
+        {% for item in items %}
+        
+        <tr>
+            <td>{{ item.pk }}</td>
+            <td>{{ item.itmName }}</td>
+            <td>{{ item.itmType }}</td>
+            <td>{{ item.itmQty }}</td>
+            <td>{{ item.itmUnit }}</td>
+            <td>{{ item.itmStatus }}</td>
+            <td>{{ item.supplierID }}</td>
+            
+            <td>
+                <a href="{% url 'edit_inventory' item.pk %}" class="btn btn-warning btn=sm" role="button">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'add_Item' %}" class="btn btn-primary btn-dark btn-md" rold="button">ADD NEW ITEM</a>
+{% endblock %}

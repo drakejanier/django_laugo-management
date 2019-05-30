@@ -1,0 +1,56 @@
+r0 - pip install django
+
+r1 - django-admin startproject <project name> //make project
+
+r2 - python manage.py runserver //in project fold run and test the server
+
+r3 - python manage.py startapp <app name> //create the app * like inventory
+
+r4 - <project name>/settings.py // add the <app name> to use inventory
+
+r5 - python -m venv env //install python env to rid of error messages
+
+r6 - python manage.py makemigrations //create tables
+
+#CREATING A DATABASE TABLES /MODELS
+
+>create an app (r3)> link app in settings (r4)
+
+> in <appname>/models.py create a class <className>(model.Models)
+> in className create the columns
+> column fields should be lower case eg max_length not max_Length
+
+#CREATING A BOOTSTRAP UI/VIEWS
+> in <appame> create a folder 'static' and extract bootstrap  // in settings.py static_url is already linked
+> in <appame> create folder 'templates' //pull all html files to be rendered
+
+    #TEMPLATE INHERITANCE
+    >link bootstrap // in base.html insert the bootstrap template eg. for static navigation
+
+    eg. {% extends 'base.html' %} //in index.html inherit the base.html files #> base.html is the STATIC index.html is not
+    > in base.html {% load static %} always load static before the static link 
+
+#URL DISPATCH //to render templates to call from backend
+> in <project> url.py "path('', include('<appname>.urls'))" //include all app urls in main urls eg. path('', include('inventory.urls'))
+    >in 'from django.urls import path' add ', include' //add the 'include' function eg. from django.urls import path, include
+
+    #in app urls
+> in <appname> folder creat urls.py //to define urls in the app
+> 'from django.conf.urls import url' //
+> urlpatterns = url(r'^$', index, name='index') //link the index  - url[1] is the function to link in views.py, url[2] is the name - r ^ is the start and $ is the end
+
+> in <appname> views.py define the index (in urls.py urlpattern(url[1]))
+
+> in <appname> url.py 'from .views import index'// import views.py index function in urls.py 
+
+-------------------------
+
+#django administration panel
+
+#VIEW TABLE ITEMS
+>define views function // eg display_item
+
+
+ERRORS ---------------------- 
+#CSRF token missing or incorrect.
+    >add '{% csrf_token %}' above the forms {% for field in form %}
