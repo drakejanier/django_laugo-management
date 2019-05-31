@@ -50,6 +50,7 @@ r6 - python manage.py makemigrations //create tables
 #VIEW TABLE ITEMS
 >define views function // eg display_item
 
+#EDIT 
 
 ERRORS ---------------------- 
 #CSRF token missing or incorrect.
